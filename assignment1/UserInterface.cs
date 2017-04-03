@@ -78,44 +78,103 @@ namespace assignment1
         public string updateName(String description)
         {
             Console.WriteLine();
-            Console.WriteLine("What would you like the Name to be?");
+            Console.WriteLine("Would you like to change the description? (Y/N)");
             Console.WriteLine("Current is: " + description);
             Console.Write("> ");
+            string input = Console.ReadLine();
+            //While te imput is not valid re-get the input
+            while (input != "Y" && input != "N")
+            {
+                //Print Error message
+                this.displayErrorMessage();
+                this.updateName(description);
+            }
 
-            return Console.ReadLine();
+            if (input == "Y")
+            {
+                Console.WriteLine("What would you like the name to be?");
+                Console.Write("> ");
+
+                return Console.ReadLine();
+            }
+            else
+            {
+                return description;
+            }
         }
 
         //Get new pack info
-        public string updatePack(String description)
+        public string updatePack(String pack)
         {
             Console.WriteLine();
-            Console.WriteLine("What would you like the pack to be?");
-            Console.WriteLine("Current is: " + description);
+            Console.WriteLine("Would you like to change the pack? (Y/N)");
+            Console.WriteLine("Current is: " + pack);
             Console.Write("> ");
+            string input = Console.ReadLine();
+            //While te imput is not valid re-get the input
+            while (input != "Y" && input != "N")
+            {
+                //Print Error message
+                this.displayErrorMessage();
+                this.updatePack(pack);
+            }
 
-            return Console.ReadLine();
+            if (input == "Y")
+            {
+                Console.WriteLine();
+                Console.WriteLine("What would you like the pack to be?");
+                Console.WriteLine("Current is: " + pack);
+                Console.Write("> ");
+
+                return Console.ReadLine();
+            }
+            else
+            {
+                return pack;
+            }
+           
         }
 
         //Get new price
         public decimal updatePrice(decimal price)
         {
-            Console.WriteLine("What is the items new Price?");
-            Console.WriteLine("Current is: " + price);
+            Console.WriteLine();
+            Console.WriteLine("Would you like to change the Price? (Y/N)");
+            Console.WriteLine("Current is: " + price.ToString("C"));
             Console.Write("> ");
-            //Attempt to parse  input
-            try
+            string input = Console.ReadLine();
+            //While te imput is not valid re-get the input
+            while (input != "Y" && input != "N")
             {
-                price = decimal.Parse(this.getSelection());
+                //Print Error message
+                this.displayErrorMessage();
+                this.updatePrice(price);
             }
-            //Display error if input is bad
-            catch
+
+            if (input == "Y")
             {
-                Console.WriteLine();
-                Console.WriteLine("That is not a valid price, please try again");
-                Console.WriteLine();
-                PriceAdd();
+                Console.WriteLine("What is the items new Price?");
+                Console.Write("> ");
+                //Attempt to parse  input
+                try
+                {
+                    price = decimal.Parse(this.getSelection());
+                }
+                //Display error if input is bad
+                catch
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("That is not a valid price, please try again");
+                    Console.WriteLine();
+                    PriceAdd();
+                }
+                return price;
+
             }
-            return price;
+            else
+            {
+                return price;
+            }
         }
 
         //Get new active status
@@ -159,7 +218,7 @@ namespace assignment1
             Console.WriteLine("Update Sucess!");
         }
 
-        //*****(*************
+        //*******************
         //Add Item
         //*******************
         //Get new item ID from user

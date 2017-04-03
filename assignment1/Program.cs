@@ -16,8 +16,8 @@ namespace assignment1
         {
             //Create an instance of the UserInterface class
             UserInterface userInterface = new UserInterface();
-
-            BeverageDGipeEntities bevItems = new BeverageDGipeEntities();
+            ////Bev item collection instance
+            BevItemCollection bevCollection = new BevItemCollection();
 
 
             //Display the Welcome Message to the user
@@ -36,9 +36,8 @@ namespace assignment1
                         string IDnew = userInterface.IDadd();
                         try
                         {
-                            //attempt to find ID
-                            Beverage ToFind = bevItems.Beverages.Where(beverage => beverage.id == IDnew).First();
-
+                            Beverage ToFind = bevCollection.searchItem(IDnew);
+                            
                             userInterface.DisplayItemAlreadyExistsError();
                         }
                         catch
@@ -48,20 +47,8 @@ namespace assignment1
                             decimal price = userInterface.PriceAdd();
                             bool active = userInterface.ActiveAdd();
 
-                            //Placeholder for new item
-                            Beverage newBev = new Beverage();
-
-                            //Assign the properties
-                            newBev.id = IDnew;
-                            newBev.name = newItemInformation[0];
-                            newBev.pack = newItemInformation[1];
-                            newBev.price = price;
-                            newBev.active = active;
+                            bevCollection.addItem(IDnew, newItemInformation, price, active);
                             
-                            //Move to database
-                            bevItems.Beverages.Add(newBev);
-                            bevItems.SaveChanges();
-
                             userInterface.DisplayAddWineItemSuccess();
                         }
                         break;
@@ -73,8 +60,8 @@ namespace assignment1
                         try
                         {
                             //attempt to find ID
-                            Beverage ToFind = bevItems.Beverages.Where(beverage => beverage.id == searchResponse).First();
-
+                            Beverage ToFind = bevCollection.searchItem(searchResponse);
+                            
                             userInterface.DisplayItemFound();
                             
                             userInterface.DisplayItemInfo(ToFind);
@@ -92,8 +79,8 @@ namespace assignment1
                         try
                         {
                             //attempt to find ID
-                            Beverage ToUpdate = bevItems.Beverages.Where(beverage => beverage.id == updateID).First();
-
+                            Beverage ToUpdate = bevCollection.searchItem(updateID);
+                            
                             userInterface.DisplayItemFound();
                             userInterface.DisplayItemInfo(ToUpdate);
                             //Get update info
@@ -105,13 +92,9 @@ namespace assignment1
                             //Get price info
                             bool active = userInterface.updateActive(ToUpdate.active);
 
-                            //Push to database
-                            ToUpdate.name = name;
-                            ToUpdate.pack = pack;
-                            ToUpdate.price = price;
-                            ToUpdate.active = active;
+                            //send to collection class
+                            bevCollection.updateItem(ToUpdate, name, pack, price, active);
 
-                            bevItems.SaveChanges();
                             userInterface.updateSucess();
                             userInterface.DisplayItemInfo(ToUpdate);
 
@@ -129,8 +112,8 @@ namespace assignment1
                         try
                         {
                             //attempt to find ID
-                            Beverage ToDelete = bevItems.Beverages.Where(beverage => beverage.id == deleteID).First();
-
+                            Beverage ToDelete = bevCollection.searchItem(deleteID);
+                            
                             userInterface.DisplayItemFound();
                             userInterface.DisplayItemInfo(ToDelete);
 
@@ -138,11 +121,9 @@ namespace assignment1
 
                             if (input == true)
                             {
-
-                                //Delete Item and save
-                                bevItems.Beverages.Remove(ToDelete);
-                                bevItems.SaveChanges();
-
+                                //Delete Item
+                                bevCollection.deleteItem(ToDelete);
+                                //Confirm 
                                 userInterface.confirmDelete();
                             }
                             else
