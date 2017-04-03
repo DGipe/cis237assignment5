@@ -1,4 +1,4 @@
-﻿//Author: David Barnes
+﻿//Author: David Gipe
 //CIS 237
 //Assignment 1
 using System;
@@ -28,8 +28,7 @@ namespace assignment1
                         "Active?: " + bev.active + Environment.NewLine;
             }
 
-            return returnString;
-            
+            return returnString;            
         }
 
         public Beverage searchItem(string input)

@@ -84,4 +84,8 @@ Solution Requirements:
 
 http://knowledge-republic.com/CRM/2011/10/how-do-you-create-c-search-form-with-database/
 
+Misc code pulled from assignment 3 and 4
+
 ## Known Problems, Issues, And/Or Errors in the Program
+
+Strange spacing with ToString when printing all
