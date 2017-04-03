@@ -89,3 +89,5 @@ Misc code pulled from assignment 3 and 4
 ## Known Problems, Issues, And/Or Errors in the Program
 
 Strange spacing with ToString when printing all
+
+When performing update, entry is only updated in print if you perform search or close program and re-run. 

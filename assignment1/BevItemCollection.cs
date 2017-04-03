@@ -69,7 +69,7 @@ namespace assignment1
             updateItem.pack = pack;
             updateItem.price = price;
             updateItem.active = active;
-
+            
             bevItems.SaveChanges();
         }
     }
