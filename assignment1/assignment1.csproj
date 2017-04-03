@@ -70,13 +70,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>bevModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="CSVProcessor.cs" />
-    <Compile Include="IWineCollection.cs" />
+    <Compile Include="IBevCollection.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserInterface.cs" />
-    <Compile Include="WineItem.cs" />
-    <Compile Include="WineItemCollection.cs" />
+    <Compile Include="BevItem.cs" />
+    <Compile Include="BevItemCollection.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

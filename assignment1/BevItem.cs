@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace assignment1
 {
-    class WineItem
+    class BevItem
     {
         //Private Class Level Variables
         private string id;
@@ -26,10 +26,10 @@ namespace assignment1
         }
 
         //Default Constuctor
-        public WineItem() { }
+        public BevItem() { }
 
         //3 Parameter Constructor
-        public WineItem(string id, string description, string pack)
+        public BevItem(string id, string description, string pack)
         {
             this.id = id;
             this.description = description;

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace assignment1
 {
-    interface IWineCollection
+    interface IBevCollection
     {
         void AddNewItem(string id, string description, string pack);
 

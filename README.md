@@ -3,6 +3,7 @@
 ## Due 04-03-2017
 
 ## Author
+David Gipe
 
 ## Description
 
@@ -80,5 +81,7 @@ Solution Requirements:
 | Total                                   | 100    |
 
 ## Outside Resources Used
+
+http://knowledge-republic.com/CRM/2011/10/how-do-you-create-c-search-form-with-database/
 
 ## Known Problems, Issues, And/Or Errors in the Program
